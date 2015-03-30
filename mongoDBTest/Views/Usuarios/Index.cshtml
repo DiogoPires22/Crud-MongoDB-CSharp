@@ -1,0 +1,20 @@
+﻿@using MongoDB.Bson
+@using Repository.Models;
+@model MongoDB.Driver.MongoCursor
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class=" table table-striped">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@Html.Raw(((User)user)._id)</td>
+            <td>@Html.Raw(((User)user).name)</td>
+            <td>@Html.Raw(((User)user).email)</td>
+
+        </tr>
+    }
+
+
+    </table>
