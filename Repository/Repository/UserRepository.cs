@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using Repository.Models;
 
 namespace Repository
@@ -18,6 +20,17 @@ namespace Repository
             var x = c.db.GetCollection<User>("users");
 
             return x.FindAll();
+        }
+
+
+        public User GetUserById(string id)
+        {
+            var x = c.db.GetCollection<User>("users");
+
+            var query_id = Query.EQ("_id", ObjectId.Parse(id));
+
+            var u = x.FindOne(query_id);
+            return u;
         }
 
     }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using System.Web.Mvc;
 using  Repository;
 namespace mongoDBTest.Controllers
 {
@@ -15,17 +8,15 @@ namespace mongoDBTest.Controllers
         private  readonly UserRepository r=new UserRepository();
         public ActionResult Index()
         {
-           
-         
-
-
-            //foreach (var song in cursor)
-            //{
-            //    Response.Write(song["name"]);
-            //}
-
             return View(r.GetAllUsers());
         }
 
+
+
+        public ActionResult Update(string Id)
+        {
+        
+            return View(r.GetUserById(Id));
+        }
     }
 }
